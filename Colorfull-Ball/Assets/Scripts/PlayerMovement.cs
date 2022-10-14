@@ -61,6 +61,27 @@ public  void Start()
         }
    }
 
+    public GameObject[] FractureItems;
+
+
+
+   public void OnCollisionEnter(Collision hit) 
+   {
+
+     if(hit.gameObject.CompareTag("Obstacles"))
+     {
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        
+        foreach (GameObject item in FractureItems)
+        {
+            item.GetComponent<CapsuleCollider>().enabled = true;
+            item.GetComponent<Rigidbody>().isKinematic = false;
+        }
+
+
+     }
+
+   }
 
 }
 
