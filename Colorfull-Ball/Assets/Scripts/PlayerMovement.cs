@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
    public Transform vectorback;
    public Transform vectorforward;
 
+   public CameraShake cameraShake;
+
 
 
    
@@ -70,6 +72,7 @@ public  void Start()
 
      if(hit.gameObject.CompareTag("Obstacles"))
      {
+        cameraShake.cameraShakesCall();
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
         
         foreach (GameObject item in FractureItems)
