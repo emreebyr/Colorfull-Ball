@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
    [Range(1,10)]
    public float speedModifier;
 
-   private Rigidbody rb;
+   public Rigidbody rb;
 
    public int forwardSpeed;
 
@@ -19,18 +20,22 @@ public class PlayerMovement : MonoBehaviour
    public Transform vectorforward;
 
    public CameraShake cameraShake;
+   public UIManager uimanager;
+   private bool movable;
 
-
-
-   
 
 public  void Start() 
 {
     rb = GetComponent<Rigidbody>();
+    movable = true;
 }
 
    public void Update()
    {
+
+    
+      if (movable == true) {
+
         if(Variables.firstTouch ==1)
         {
             transform.position += new Vector3(0,0,forwardSpeed*Time.deltaTime);
@@ -62,6 +67,7 @@ public  void Start()
             }
         }
    }
+   }
 
     public GameObject[] FractureItems;
 
@@ -73,7 +79,12 @@ public  void Start()
      if(hit.gameObject.CompareTag("Obstacles"))
      {
         cameraShake.cameraShakesCall();
+        uimanager.StartCoroutine("WhiteEffect");
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        movable = false;
+    
+        
+    
         
         foreach (GameObject item in FractureItems)
         {
