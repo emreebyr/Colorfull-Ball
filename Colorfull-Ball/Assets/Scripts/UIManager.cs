@@ -7,6 +7,8 @@ public class UIManager : MonoBehaviour
 {   
     public Image WhiteEffectImage;
     private int effectcontrol = 0;
+    public Button noads;
+    public Button shopcart;
 
     public IEnumerator WhiteEffect()
     {

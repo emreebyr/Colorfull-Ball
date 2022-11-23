@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
    public int forwardSpeed;
 
    public GameObject cam;
+   public GameObject effect;
    public Transform vectorback;
    public Transform vectorforward;
 
@@ -40,6 +41,7 @@ public  void Start()
         {
             transform.position += new Vector3(0,0,forwardSpeed*Time.deltaTime);
             cam.transform.position += new Vector3(0,0,forwardSpeed*Time.deltaTime);
+            //effect.transform.position += new Vector3(0,0,forwardSpeed*Time.deltaTime);
             vectorback.transform.position += new Vector3(0,0,forwardSpeed*Time.deltaTime);
             vectorforward.transform.position += new Vector3(0,0,forwardSpeed*Time.deltaTime);
         }
@@ -80,6 +82,7 @@ public  void Start()
      {
         cameraShake.cameraShakesCall();
         uimanager.StartCoroutine("WhiteEffect");
+        
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
         movable = false;
     
