@@ -21,6 +21,18 @@ public class UIManager : MonoBehaviour
     public GameObject iap;
     public GameObject information;
 
+    public void Start()
+    {
+        if(PlayerPrefs.HasKey("Sound") == false)
+        {
+            PlayerPrefs.SetInt("Sound", 1);
+        }
+
+        if (PlayerPrefs.HasKey("Vibration") == false)
+        {
+            PlayerPrefs.SetInt("Vibration", 1);
+        }
+    }
 
     //buttons_functions
 
@@ -39,6 +51,36 @@ public class UIManager : MonoBehaviour
         Settings_Open.SetActive(false);
         Settings_Close.SetActive(true);
         layoutAnimator.SetTrigger("Slide_in");
+
+
+        if (PlayerPrefs.GetInt("Sound") == 1)
+        {
+            sound_on.SetActive(true);
+            sound_off.SetActive(false);
+            AudioListener.volume = 1 ;
+        }
+
+        else if (PlayerPrefs.GetInt("Sound") == 2)
+        {
+            sound_on.SetActive(false);
+            sound_off.SetActive(true);
+            AudioListener.volume = 2 ;
+        }
+
+         if (PlayerPrefs.GetInt("Vibration") == 1)
+        {
+
+            vibration_on.SetActive(true);
+             vibration_off.SetActive(false);
+             
+        }
+
+        else if (PlayerPrefs.GetInt("Vibration") == 2)
+        {
+             vibration_on.SetActive(false);
+             vibration_off.SetActive(true);
+        }
+
     }
 
     public void settings_Close()
@@ -52,24 +94,30 @@ public class UIManager : MonoBehaviour
     {
         sound_on.SetActive(false);
         sound_off.SetActive(true);
+        AudioListener.volume = 0;
+        PlayerPrefs.SetInt("Sound",2);
     }
 
     public void Sound_off()
     {
         sound_on.SetActive(true);
         sound_off.SetActive(false);
+        AudioListener.volume = 1 ;
+        PlayerPrefs.SetInt("Sound",1);
     }
 
     public void Vibration_on()
     {
         vibration_on.SetActive(false);
         vibration_off.SetActive(true);
+        PlayerPrefs.SetInt("Vibration",2);
     }
 
     public void Vibration_off()
     {
         vibration_on.SetActive(true);
         vibration_off.SetActive(false);
+        PlayerPrefs.SetInt("Vibration",1);
     }
 
     public IEnumerator WhiteEffect()

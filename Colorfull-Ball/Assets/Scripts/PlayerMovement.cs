@@ -24,6 +24,13 @@ public class PlayerMovement : MonoBehaviour
    public UIManager uimanager;
    private bool movable;
 
+    // deneme
+
+   public GameObject easyuse;
+   public GameObject startingtext;
+   public GameObject starting1;
+   public GameObject starting2;
+
 
 public  void Start() 
 {
@@ -32,7 +39,9 @@ public  void Start()
 }
 
    public void Update()
-   {
+   {    
+
+     // Debug.Log(AudioListener.volume);
 
     
       if (movable == true) {
@@ -44,6 +53,13 @@ public  void Start()
             //effect.transform.position += new Vector3(0,0,forwardSpeed*Time.deltaTime);
             vectorback.transform.position += new Vector3(0,0,forwardSpeed*Time.deltaTime);
             vectorforward.transform.position += new Vector3(0,0,forwardSpeed*Time.deltaTime);
+
+            //deneme
+            
+            easyuse.SetActive(false);
+            startingtext.SetActive(false);
+            starting1.SetActive(false);
+            starting2.SetActive(false);
         }
 
 
