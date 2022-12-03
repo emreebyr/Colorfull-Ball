@@ -26,10 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     // deneme
 
-   public GameObject easyuse;
-   public GameObject startingtext;
-   public GameObject starting1;
-   public GameObject starting2;
+   
 
 
 public  void Start() 
@@ -56,10 +53,7 @@ public  void Start()
 
             //deneme
             
-            easyuse.SetActive(false);
-            startingtext.SetActive(false);
-            starting1.SetActive(false);
-            starting2.SetActive(false);
+            
         }
 
 
@@ -70,6 +64,8 @@ public  void Start()
             if(touch.phase == TouchPhase.Began)
             {
                 Variables.firstTouch = 1;
+                uimanager.firstTouch_Destroy();
+                
             }
 
             if(touch.phase == TouchPhase.Moved)

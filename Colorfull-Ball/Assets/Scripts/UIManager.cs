@@ -21,6 +21,13 @@ public class UIManager : MonoBehaviour
     public GameObject iap;
     public GameObject information;
 
+    //startingUIcontrol
+
+    public GameObject easyuse;
+    public GameObject startingtext;
+    public GameObject noads_button;
+    public GameObject shop_button;
+
     public void Start()
     {
         if(PlayerPrefs.HasKey("Sound") == false)
@@ -35,6 +42,26 @@ public class UIManager : MonoBehaviour
     }
 
     //buttons_functions
+
+    public void firstTouch_Destroy()
+    {
+
+        Settings_Open.SetActive(false);
+        Settings_Close.SetActive(false);
+        sound_on.SetActive(false);
+        sound_off.SetActive(false);
+        vibration_on.SetActive(false);
+        vibration_off.SetActive(false);
+        iap.SetActive(false);
+        information.SetActive(false);
+        easyuse.SetActive(false);
+        startingtext.SetActive(false);
+        noads_button.SetActive(false);
+        shop_button.SetActive(false);
+        
+        
+    }
+    
 
     public void privacy_Policy()
     {

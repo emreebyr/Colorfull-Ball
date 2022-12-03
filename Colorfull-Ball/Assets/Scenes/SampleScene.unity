@@ -2673,10 +2673,6 @@ MonoBehaviour:
   vectorforward: {fileID: 662040862}
   cameraShake: {fileID: 963194229}
   uimanager: {fileID: 338765896}
-  easyuse: {fileID: 615877025}
-  startingtext: {fileID: 401376209}
-  starting1: {fileID: 873465720}
-  starting2: {fileID: 638389676}
   FractureItems:
   - {fileID: 2871415896181602979}
   - {fileID: 9175464280160083189}
@@ -2856,6 +2852,10 @@ MonoBehaviour:
   vibration_off: {fileID: 991063296}
   iap: {fileID: 1004967390}
   information: {fileID: 1781403647}
+  easyuse: {fileID: 615877025}
+  startingtext: {fileID: 401376209}
+  noads_button: {fileID: 873465720}
+  shop_button: {fileID: 638389676}
 --- !u!1 &348803542
 GameObject:
   m_ObjectHideFlags: 0
