@@ -47,11 +47,9 @@ public  void Start()
         {
             transform.position += new Vector3(0,0,forwardSpeed*Time.deltaTime);
             cam.transform.position += new Vector3(0,0,forwardSpeed*Time.deltaTime);
-            //effect.transform.position += new Vector3(0,0,forwardSpeed*Time.deltaTime);
+            effect.transform.position += new Vector3(0,0,forwardSpeed*Time.deltaTime);
             vectorback.transform.position += new Vector3(0,0,forwardSpeed*Time.deltaTime);
             vectorforward.transform.position += new Vector3(0,0,forwardSpeed*Time.deltaTime);
-
-            //deneme
             
             
         }
@@ -89,26 +87,33 @@ public  void Start()
 
    public void OnCollisionEnter(Collision hit) 
    {
-
-     if(hit.gameObject.CompareTag("Obstacles"))
+        if(hit.gameObject.CompareTag("Obstacles"))
      {
+
         cameraShake.cameraShakesCall();
-        uimanager.StartCoroutine("WhiteEffect");
-        
+        uimanager.StartCoroutine("WhiteEffect");  
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
         movable = false;
     
-        
-    
-        
-        foreach (GameObject item in FractureItems)
+            foreach (GameObject item in FractureItems)
         {
             item.GetComponent<CapsuleCollider>().enabled = true;
             item.GetComponent<Rigidbody>().isKinematic = false;
         }
 
+        StartCoroutine(TimeScaleControl());
 
      }
+   }
+   
+
+   public IEnumerator TimeScaleControl()
+   {
+
+     Time.timeScale = 0.4f;
+     yield return new WaitForSecondsRealtime(2);
+     uimanager.RestartButtonActive();
+     rb.velocity = Vector3.zero;
 
    }
 

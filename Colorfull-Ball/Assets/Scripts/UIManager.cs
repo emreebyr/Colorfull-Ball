@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {   
@@ -20,6 +21,7 @@ public class UIManager : MonoBehaviour
     public GameObject vibration_off;
     public GameObject iap;
     public GameObject information;
+    public GameObject Restart_Screen;
 
     //startingUIcontrol
 
@@ -60,6 +62,18 @@ public class UIManager : MonoBehaviour
         shop_button.SetActive(false);
         
         
+    }
+
+    public void RestartButtonActive()
+    {
+        Restart_Screen.SetActive(true);
+    }
+
+    public void restart_scene()
+    {
+        Variables.firstTouch = 0;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
     }
     
 
@@ -168,12 +182,6 @@ public class UIManager : MonoBehaviour
             {
                 effectcontrol = 2;
             }
-        }
-
-        if(effectcontrol ==2)
-        {
-            Debug.Log("işlem tamam");
-            
         }
     }
 }
