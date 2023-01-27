@@ -1,14 +1,13 @@
- using System.Collections;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
-{   
+{
     public Image WhiteEffectImage;
     private int effectcontrol = 0;
- 
+
     public Animator layoutAnimator;
 
     //buttons
@@ -32,7 +31,7 @@ public class UIManager : MonoBehaviour
 
     public void Start()
     {
-        if(PlayerPrefs.HasKey("Sound") == false)
+        if (PlayerPrefs.HasKey("Sound") == false)
         {
             PlayerPrefs.SetInt("Sound", 1);
         }
@@ -60,8 +59,8 @@ public class UIManager : MonoBehaviour
         startingtext.SetActive(false);
         noads_button.SetActive(false);
         shop_button.SetActive(false);
-        
-        
+
+
     }
 
     public void RestartButtonActive()
@@ -75,7 +74,7 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1f;
     }
-    
+
 
     public void privacy_Policy()
     {
@@ -98,28 +97,28 @@ public class UIManager : MonoBehaviour
         {
             sound_on.SetActive(true);
             sound_off.SetActive(false);
-            AudioListener.volume = 1 ;
+            AudioListener.volume = 1;
         }
 
         else if (PlayerPrefs.GetInt("Sound") == 2)
         {
             sound_on.SetActive(false);
             sound_off.SetActive(true);
-            AudioListener.volume = 2 ;
+            AudioListener.volume = 2;
         }
 
-         if (PlayerPrefs.GetInt("Vibration") == 1)
+        if (PlayerPrefs.GetInt("Vibration") == 1)
         {
 
             vibration_on.SetActive(true);
-             vibration_off.SetActive(false);
-             
+            vibration_off.SetActive(false);
+
         }
 
         else if (PlayerPrefs.GetInt("Vibration") == 2)
         {
-             vibration_on.SetActive(false);
-             vibration_off.SetActive(true);
+            vibration_on.SetActive(false);
+            vibration_off.SetActive(true);
         }
 
     }
@@ -136,49 +135,49 @@ public class UIManager : MonoBehaviour
         sound_on.SetActive(false);
         sound_off.SetActive(true);
         AudioListener.volume = 0;
-        PlayerPrefs.SetInt("Sound",2);
+        PlayerPrefs.SetInt("Sound", 2);
     }
 
     public void Sound_off()
     {
         sound_on.SetActive(true);
         sound_off.SetActive(false);
-        AudioListener.volume = 1 ;
-        PlayerPrefs.SetInt("Sound",1);
+        AudioListener.volume = 1;
+        PlayerPrefs.SetInt("Sound", 1);
     }
 
     public void Vibration_on()
     {
         vibration_on.SetActive(false);
         vibration_off.SetActive(true);
-        PlayerPrefs.SetInt("Vibration",2);
+        PlayerPrefs.SetInt("Vibration", 2);
     }
 
     public void Vibration_off()
     {
         vibration_on.SetActive(true);
         vibration_off.SetActive(false);
-        PlayerPrefs.SetInt("Vibration",1);
+        PlayerPrefs.SetInt("Vibration", 1);
     }
 
     public IEnumerator WhiteEffect()
     {
         WhiteEffectImage.gameObject.SetActive(true);
-        while(effectcontrol == 0)
+        while (effectcontrol == 0)
         {
             yield return new WaitForSeconds(0.001f);
-            WhiteEffectImage.color += new Color(0,0,0.1f);
-            if(WhiteEffectImage.color == new Color (WhiteEffectImage.color.r, WhiteEffectImage.color.g, WhiteEffectImage.color.b,1))
+            WhiteEffectImage.color += new Color(0, 0, 0.1f);
+            if (WhiteEffectImage.color == new Color(WhiteEffectImage.color.r, WhiteEffectImage.color.g, WhiteEffectImage.color.b, 1))
             {
                 effectcontrol = 1;
             }
         }
 
-        while(effectcontrol == 1)
+        while (effectcontrol == 1)
         {
-             yield return new WaitForSeconds(0.001f);
-             WhiteEffectImage.color -= new Color(0,0,0.1f);
-             if(WhiteEffectImage.color == new Color (WhiteEffectImage.color.r, WhiteEffectImage.color.g, WhiteEffectImage.color.b,0))
+            yield return new WaitForSeconds(0.001f);
+            WhiteEffectImage.color -= new Color(0, 0, 0.1f);
+            if (WhiteEffectImage.color == new Color(WhiteEffectImage.color.r, WhiteEffectImage.color.g, WhiteEffectImage.color.b, 0))
             {
                 effectcontrol = 2;
             }

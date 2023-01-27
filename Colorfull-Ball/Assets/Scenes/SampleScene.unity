@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.6005195, g: 0.4850235, b: 0.8659574, a: 1}
+  m_IndirectSpecularColor: {r: 0.6005072, g: 0.4850123, b: 0.8659485, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11299,6 +11299,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1414136883}
+  - component: {fileID: 1414136884}
   m_Layer: 0
   m_Name: CameraHolder
   m_TagString: Untagged
@@ -11321,6 +11322,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 49.552, y: 0, z: 0}
+--- !u!114 &1414136884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414136882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbc1ec148c0f3764fa3d140512c5719c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forwardCamSpeed: 8
 --- !u!1 &1418290994
 GameObject:
   m_ObjectHideFlags: 0
@@ -15217,7 +15231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!199 &1950575099
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -21036,6 +21050,7 @@ GameObject:
   - component: {fileID: 2075970052}
   - component: {fileID: 2075970054}
   - component: {fileID: 2075970053}
+  - component: {fileID: 2075970055}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -21159,6 +21174,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2075970051}
   m_CullTransparentMesh: 1
+--- !u!95 &2075970055
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075970051}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 08818f5ef40c6104ea2212e5ef4e7271, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2077906073
 GameObject:
   m_ObjectHideFlags: 0
