@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,11 +10,13 @@ public class UIManager : MonoBehaviour
     private int effectcontrol = 0;
 
     public Animator layoutAnimator;
+    public TextMeshProUGUI coin_Text;
 
     //buttons
 
     public GameObject Settings_Open;
     public GameObject Settings_Close;
+    public GameObject layout_Background;
     public GameObject sound_on;
     public GameObject sound_off;
     public GameObject vibration_on;
@@ -40,6 +43,8 @@ public class UIManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("Vibration", 1);
         }
+
+        coinText_Update();
     }
 
     //buttons_functions
@@ -59,8 +64,13 @@ public class UIManager : MonoBehaviour
         startingtext.SetActive(false);
         noads_button.SetActive(false);
         shop_button.SetActive(false);
+        layout_Background.SetActive(false);
 
+    }
 
+    public void coinText_Update()
+    {
+        coin_Text.text = PlayerPrefs.GetInt("moneyy").ToString();
     }
 
     public void RestartButtonActive()
@@ -70,7 +80,7 @@ public class UIManager : MonoBehaviour
 
     public void restart_scene()
     {
-        Variables.firstTouch = 0;
+        GameManager.firstTouch = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1f;
     }

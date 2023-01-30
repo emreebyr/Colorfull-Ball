@@ -24,10 +24,8 @@ public class PlayerMovement : MonoBehaviour
     private bool movable;
     private bool firstTouchControl = false;
 
+
     // deneme
-
-
-
 
     public void Start()
     {
@@ -40,20 +38,17 @@ public class PlayerMovement : MonoBehaviour
 
         // Debug.Log(AudioListener.volume);
 
-
         if (movable == true)
         {
 
-            if (Variables.firstTouch == 1)
+            if (GameManager.firstTouch == 1)
             {
                 transform.position += new Vector3(0, 0, forwardSpeed * Time.deltaTime);
-                effect.transform.position += new Vector3(0, 0, forwardSpeed * Time.deltaTime);
+                //effect.transform.position += new Vector3(0, 0, forwardSpeed * Time.deltaTime);
                 vectorback.transform.position += new Vector3(0, 0, forwardSpeed * Time.deltaTime);
                 vectorforward.transform.position += new Vector3(0, 0, forwardSpeed * Time.deltaTime);
 
-
             }
-
 
             if (Input.touchCount > 0)
             {
@@ -64,22 +59,35 @@ public class PlayerMovement : MonoBehaviour
                     if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
 
                     {
-                        if (firstTouchControl==false)
+                        if (firstTouchControl == false)
                         {
-                            Variables.firstTouch = 1;
+                            GameManager.firstTouch = 1;
                             uimanager.firstTouch_Destroy();
                             firstTouchControl = true;
                         }
-                        
                     }
-
                 }
 
                 if (touch.phase == TouchPhase.Moved)
                 {
-                    rb.velocity = new Vector3(touch.deltaPosition.x * speedModifier,
+
+                    if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+
+                    {
+                        rb.velocity = new Vector3(touch.deltaPosition.x * speedModifier,
                                               transform.position.y,
                                               touch.deltaPosition.y * speedModifier);
+
+                        if (firstTouchControl == false)
+                        {
+
+                            GameManager.firstTouch = 1;
+                            uimanager.firstTouch_Destroy();
+                            firstTouchControl = true;
+                            
+                        }
+                    }
+
                 }
                 else if (touch.phase == TouchPhase.Ended)
                 {
@@ -91,7 +99,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public GameObject[] FractureItems;
-
 
 
     public void OnCollisionEnter(Collision hit)
@@ -115,7 +122,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
     public IEnumerator TimeScaleControl()
     {
 
@@ -123,7 +129,6 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSecondsRealtime(3);
         uimanager.RestartButtonActive();
         rb.velocity = Vector3.zero;
-
     }
 
 }
