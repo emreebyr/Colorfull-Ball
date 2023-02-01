@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public int forwardCamSpeed;
+    public  int forwardCamSpeed;
 
 
     // Update is called once per frame
@@ -12,5 +12,11 @@ public class CameraFollow : MonoBehaviour
         {
             transform.position += new Vector3(0, 0, forwardCamSpeed * Time.deltaTime);
         }
+
+        if(GameManager.movable==false)
+        {
+            forwardCamSpeed= 0;
+        }
+        
     }
 }

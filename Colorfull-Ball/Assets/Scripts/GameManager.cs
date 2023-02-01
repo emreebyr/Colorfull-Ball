@@ -3,11 +3,18 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public UIManager uimanager;
+    
     public static int firstTouch = 0;
+    public static bool movable=true;
+    public static bool firstTouchControl=false;
+
 
     private void Start()
     {
         CoinCalculator(0);
+
+        //CameraFollow camFollow = GetComponent<CameraFollow>();
+   
     }
 
     public void OnTriggerEnter(Collider other)
@@ -17,6 +24,8 @@ public class GameManager : MonoBehaviour
             CoinCalculator(100);
             Debug.Log(PlayerPrefs.GetInt("moneyy"));
             uimanager.coinText_Update();
+
+            Invoke("finisher", 1.25f);
 
         }
     }
@@ -32,5 +41,11 @@ public class GameManager : MonoBehaviour
 
         else
             PlayerPrefs.SetInt("moneyy", 0);
+    }
+
+    public void finisher ()
+    {
+        movable = false;
+            
     }
 }

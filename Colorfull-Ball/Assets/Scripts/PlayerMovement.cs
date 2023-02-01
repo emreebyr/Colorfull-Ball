@@ -21,16 +21,14 @@ public class PlayerMovement : MonoBehaviour
 
     public CameraShake cameraShake;
     public UIManager uimanager;
-    private bool movable;
-    private bool firstTouchControl = false;
+    
+    
 
-
-    // deneme
 
     public void Start()
     {
         rb = GetComponent<Rigidbody>();
-        movable = true;
+
     }
 
     public void Update()
@@ -38,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Debug.Log(AudioListener.volume);
 
-        if (movable == true)
+        if (GameManager.movable == true)
         {
 
             if (GameManager.firstTouch == 1)
@@ -59,11 +57,11 @@ public class PlayerMovement : MonoBehaviour
                     if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
 
                     {
-                        if (firstTouchControl == false)
+                        if (GameManager.firstTouchControl == false)
                         {
                             GameManager.firstTouch = 1;
                             uimanager.firstTouch_Destroy();
-                            firstTouchControl = true;
+                            GameManager.firstTouchControl = true;
                         }
                     }
                 }
@@ -78,12 +76,12 @@ public class PlayerMovement : MonoBehaviour
                                               transform.position.y,
                                               touch.deltaPosition.y * speedModifier);
 
-                        if (firstTouchControl == false)
+                        if (GameManager.firstTouchControl == false)
                         {
 
                             GameManager.firstTouch = 1;
                             uimanager.firstTouch_Destroy();
-                            firstTouchControl = true;
+                            GameManager.firstTouchControl = true;
                             
                         }
                     }
@@ -109,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
             cameraShake.cameraShakesCall();
             uimanager.StartCoroutine("WhiteEffect");
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
-            movable = false;
+            GameManager.movable = false;
 
             foreach (GameObject item in FractureItems)
             {
